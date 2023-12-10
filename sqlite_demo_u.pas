@@ -10,15 +10,21 @@ uses
   FireDAC.Phys.SQLiteDef, FireDAC.Stan.ExprFuncs, FireDAC.VCLUI.Wait,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
   FireDAC.Phys.SQLiteWrapper.Stat, Data.DB, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids;
+  FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
 
 type
   TSqlit_Demo = class(TForm)
     FDConSqlite: TFDConnection;
     FDQSqlite: TFDQuery;
     FDPhysSQLiteDriverLink1: TFDPhysSQLiteDriverLink;
-    DBGrid1: TDBGrid;
     DataSourceSqlite: TDataSource;
+    btnInsert: TButton;
+    edtName: TEdit;
+    edtEmail: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    procedure FormCreate(Sender: TObject);
+    procedure btnInsertClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,5 +37,28 @@ var
 implementation
 
 {$R *.dfm}
+
+// Open Connection
+procedure TSqlit_Demo.FormCreate(Sender: TObject);
+begin
+  FDConSqlite.Connected := True;
+end;
+
+// Execute SQL Queries --> Insert Values
+procedure TSqlit_Demo.btnInsertClick(Sender: TObject);
+begin
+  FDQSqlite.Close;
+  FDQSqlite.SQL.Text := 'INSERT INTO Users (name, email) VALUES (:name, :email)';
+  FDQSqlite.Params.ParamByName('name').AsString := edtName.Text;
+  FDQSqlite.Params.ParamByName('email').AsString := edtEmail.Text;
+
+  try
+    FDQSqlite.ExecSQL;
+    ShowMessage('Data inserted successfully.');
+  except
+    on E: Exception do
+      ShowMessage('Error: ' + E.Message);
+  end;
+end;
 
 end.

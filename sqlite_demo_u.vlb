@@ -1,12 +1,9 @@
 ﻿[FDPhysSQLiteDriverLink1]
 Coordinates=178,53,142,33
 
-[DBGrid1]
+[]
 Coordinates=83,10,56,33
 Visible=True
-
-[]
-Coordinates=205,1,82,33
 
 [FDConSqlite]
 Coordinates=77,106,90,33

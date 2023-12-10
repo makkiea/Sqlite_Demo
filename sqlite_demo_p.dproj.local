@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2023/12/02 16:50:08.904,=C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023/12/02 16:52:57.960,C:\Delphi\Projects\Sqlite_Demo\sqlite_demo_u.pas=C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023/12/02 16:52:57.960,C:\Delphi\Projects\Sqlite_Demo\sqlite_demo_u.dfm=C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2023/12/02 16:53:15.412,C:\Delphi\Projects\Sqlite_Demo\sqlite_demo_p.dproj=C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2023/12/02 17:22:21.413,=C:\Delphi\Projects\Sqlite_Demo\Unit1.pas</Transaction>
+	<Transactions>
+    <Transaction>2023/12/02 16:50:08.000.904,=C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/12/02 16:52:57.000.960,C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Unit1.dfm=C:\Delphi\Projects\Sqlite_Demo\sqlite_demo_u.dfm</Transaction>
+    <Transaction>2023/12/02 16:52:57.000.960,C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Unit1.pas=C:\Delphi\Projects\Sqlite_Demo\sqlite_demo_u.pas</Transaction>
+    <Transaction>2023/12/02 16:53:15.000.412,C:\Users\Mohammad Makkiea\OneDrive\Dokumente\Embarcadero\Studio\Projects\Project1.dproj=C:\Delphi\Projects\Sqlite_Demo\sqlite_demo_p.dproj</Transaction>
+    <Transaction>2023/12/02 17:22:21.000.413,=C:\Delphi\Projects\Sqlite_Demo\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>
