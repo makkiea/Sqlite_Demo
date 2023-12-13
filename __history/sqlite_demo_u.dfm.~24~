@@ -66,13 +66,12 @@ object Sqlit_Demo: TSqlit_Demo
       item
         Expanded = False
         FieldName = 'name'
-        Width = 132
+        Width = 109
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'email'
-        Width = 120
         Visible = True
       end>
   end

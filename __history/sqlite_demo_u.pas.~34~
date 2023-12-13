@@ -58,11 +58,11 @@ var
 begin
   if not FDQSqlite.IsEmpty then
   begin
-    SelectedID := FDQSqlite.FieldByName('id').AsInteger;
+    SelectedID := FDQSqlite.FieldByName('name').AsInteger;
     FDQSqlite.Delete;
 
     try
-      FDQSqlite.SQL.Text := 'DELETE FROM Users WHERE id = :ID';
+      FDQSqlite.SQL.Text := 'DELETE FROM Users WHERE name = :ID';
       FDQSqlite.ParamByName('ID').AsInteger := SelectedID;
       FDQSqlite.ExecSQL;
     except
@@ -73,7 +73,6 @@ begin
   else begin
     ShowMessage('No records to delete.');
   end;
-
   // Refresh The Table
   FDQSqlite.Open('SELECT * FROM Users');
 end;
@@ -103,7 +102,33 @@ end;
 
 procedure TSqlit_Demo.btnUpdateClick(Sender: TObject);
 begin
-//
+  if not FDQSqlite.IsEmpty then
+  begin
+    try
+      FDQSqlite.Edit;
+
+      // Assuming Edit1 and Edit2 are your data-aware controls for name and email
+      FDQSqlite.FieldByName('name').AsString := edtName.Text;
+      FDQSqlite.FieldByName('email').AsString := edtEmail.Text;
+
+      FDQSqlite.Post;
+
+      FDQSqlite.SQL.Text := 'UPDATE Users SET name = :name, email = :email WHERE ID = :ID';
+      FDQSqlite.ExecSQL;
+      ShowMessage('Record updated successfully.');
+    except
+      on E: Exception do
+      begin
+        FDQSqlite.Cancel; // Cancel changes if an error occurs
+        ShowMessage('Error: ' + E.Message);
+      end;
+    end;
+  end
+  else
+    ShowMessage('No records to update.');
+
+  // Refresh The Table
+  FDQSqlite.Open('SELECT * FROM Users');
 end;
 
 end.

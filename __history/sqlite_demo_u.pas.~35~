@@ -24,8 +24,13 @@ type
     Label1: TLabel;
     Label2: TLabel;
     DBGrid1: TDBGrid;
+    btnDelete: TButton;
+    Button1: TButton;
+    btnUpdate: TButton;
     procedure FormCreate(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
+    procedure btnDeleteClick(Sender: TObject);
+    procedure btnUpdateClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,7 +51,33 @@ begin
   FDQSqlite.Open('SELECT * FROM Users');
 end;
 
-// Execute SQL Queries --> Insert Values
+// Execute SQL Queries --> Delete record
+procedure TSqlit_Demo.btnDeleteClick(Sender: TObject);
+var
+  SelectedID: Integer;
+begin
+  if not FDQSqlite.IsEmpty then
+  begin
+    SelectedID := FDQSqlite.FieldByName('name').AsInteger;
+    FDQSqlite.Delete;
+
+    try
+      FDQSqlite.SQL.Text := 'DELETE FROM Users WHERE name = :ID';
+      FDQSqlite.ParamByName('ID').AsInteger := SelectedID;
+      FDQSqlite.ExecSQL;
+    except
+      on E: Exception do
+        ShowMessage('Error: ' + E.Message);
+    end;
+  end
+  else begin
+    ShowMessage('No records to delete.');
+  end;
+  // Refresh The Table
+  FDQSqlite.Open('SELECT * FROM Users');
+end;
+
+// Execute SQL Queries --> Insert record
 procedure TSqlit_Demo.btnInsertClick(Sender: TObject);
 begin
   FDQSqlite.Close;
@@ -56,11 +87,22 @@ begin
 
   try
     FDQSqlite.ExecSQL;
-    ShowMessage('Data inserted successfully.');
+//    ShowMessage('Data inserted successfully.');
   except
     on E: Exception do
       ShowMessage('Error: ' + E.Message);
   end;
+  // Delete the values
+  edtName.Text := '';
+  edtEmail.Text := '';
+
+  // Refresh The Table
+  FDQSqlite.Open('SELECT * FROM Users');
+end;
+
+procedure TSqlit_Demo.btnUpdateClick(Sender: TObject);
+begin
+//
 end;
 
 end.

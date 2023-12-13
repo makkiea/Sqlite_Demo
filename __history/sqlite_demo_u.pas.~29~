@@ -23,12 +23,12 @@ type
     edtEmail: TEdit;
     Label1: TLabel;
     Label2: TLabel;
+    DBGrid1: TDBGrid;
     procedure FormCreate(Sender: TObject);
     procedure btnInsertClick(Sender: TObject);
   private
     { Private declarations }
   public
-    procedure ExecuteQuery;
     { Public declarations }
   end;
 
@@ -42,7 +42,8 @@ implementation
 // Open Connection
 procedure TSqlit_Demo.FormCreate(Sender: TObject);
 begin
-  FDConSqlite.Connected := True;
+//  FDConSqlite.Connected := True;
+  FDQSqlite.Open('SELECT * FROM Users');
 end;
 
 // Execute SQL Queries --> Insert Values
@@ -55,11 +56,15 @@ begin
 
   try
     FDQSqlite.ExecSQL;
-    ShowMessage('Data inserted successfully.');
+//    ShowMessage('Data inserted successfully.');
   except
     on E: Exception do
       ShowMessage('Error: ' + E.Message);
   end;
+  edtName.Text := '';
+  edtEmail.Text := '';
+
+  FDQSqlite.Open('SELECT * FROM Users');
 end;
 
 end.
