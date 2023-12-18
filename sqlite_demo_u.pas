@@ -103,7 +103,8 @@ end;
 
 procedure TSqlit_Demo.btnUpdateClick(Sender: TObject);
 begin
-//
+  // Refresh The Table
+  FDQSqlite.Open('SELECT * FROM Users');
 end;
 
 end.
